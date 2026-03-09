@@ -1,57 +1,224 @@
-# Internet Networking CA-2
+# 🌐 Internet Networking CA-2 – Enterprise Network Infrastructure Design
 
-## Overview
-This project outlines the **network infrastructure** for a **five-floor office building** at **SSL Securities**, ensuring efficient communication, scalability, and fault tolerance. The network is designed using a **hybrid topology approach**, dynamic routing for inter-floor communication, and a structured **IP addressing scheme** based on **VLSM**.
+![Topology](https://img.shields.io/badge/Network-Hybrid%20Topology-green?style=for-the-badge)
+![Routing](https://img.shields.io/badge/Routing-Dynamic%20Routing-orange?style=for-the-badge)
+![RIP](https://img.shields.io/badge/Protocol-RIP-red?style=for-the-badge)
+![IPv4](https://img.shields.io/badge/IP-IPv4-purple?style=for-the-badge)
 
-## Network Topology
-The office network follows a **hybrid topology model** to balance performance, scalability, and fault tolerance:
-- **Floors 1-4:** Bus topology, providing straightforward setup and efficient data transmission for departmental needs.
-- **Floor 5:** Mesh topology, delivering maximum fault tolerance with direct interconnections between all network devices.
-- **Router Connectivity:** Routers are interconnected to maintain seamless communication across floors with redundancy considerations.
+This project presents the **design and implementation of a network infrastructure for a five-floor office building at SSL Securities**. The objective is to create a **scalable, efficient, and fault-tolerant enterprise network** using a structured **hybrid topology**, **dynamic routing**, and **VLSM-based IP addressing**.
 
-## IP Addressing Scheme
-- **Floors 1-2:** Assigned **Class A Public IPv4 addresses**, ensuring broad connectivity with external networks.
-- **Floors 3-5:** Assigned **Class A Private IPv4 addresses**, optimizing internal communication and security.
-- **VLSM (Variable Length Subnet Masking):** Implemented to optimize IP address utilization for each floor based on actual requirements.
-- Each floor is allocated a unique subnet with properly assigned **subnetwork address**, **host IP range**, and **broadcast address**.
+The design ensures **optimized network performance, efficient IP utilization, and seamless communication between departments across all floors**.
 
-## Server Placement
-- **DNS Server:** Deployed on Floor 1 to handle domain name resolution for the entire enterprise.
-- **DHCP Server:** Installed on Floor 2 for automatic IP assignment across devices.
-- **FTP Server:** Installed on Floor 3 to manage file transfers efficiently.
-- **Email & HTTP Servers:** Configured on Floor 5 to manage corporate communications and web services.
+---
 
-## Routing Strategy
-- **Dynamic Routing** is implemented using the **RIP (Routing Information Protocol)** to enable scalable and adaptable inter-floor communication.
-- **Routers Used:** A total of **4 routers** are deployed to connect different floors efficiently while minimizing complexity.
-- **Default Gateways:** Defined separately for each floor, aligned with the first usable IP address in each subnet.
-- **Interdepartment Communication:** Designed to be seamless through dynamic route updates and router interconnections.
+# 📌 Table of Contents
 
-## Connectivity Testing
-- Conducted extensive **ping tests** between all floors to verify proper inter-LAN and inter-floor communication.
-- Successful results confirm that packets traverse the network efficiently without packet loss or delays.
+- Introduction  
+- Network Architecture  
+- Network Topology  
+- IP Addressing Scheme  
+- Server Placement  
+- Routing Strategy  
+- Connectivity Testing  
+- Network Devices  
+- Project Components  
+- Innovations Implemented  
+- Future Enhancements  
+- Author  
+- License  
 
-## Network Devices and Placement
-- **Switches:** Used on each floor to connect end devices.
-- **Routers:** Strategically placed to interconnect floors.
-- **Access Points:** Planned for future wireless expansion, currently reserved for enhancements.
+---
 
-## Project Files
-- **Network Diagram:** Complete labeled topology showcasing server placement, routers, and end devices.
-- **Configuration Scripts:** Router configuration for RIP dynamic routing and basic switch configurations (to be added if required).
+# 📖 Introduction
 
-## Innovations Implemented
-- **VLSM Optimization:** Applied to save IP address space and enhance network manageability.
-- **Future-Proof Design:** Structured with scope for easy VLAN implementation and wireless network integration.
-- **Dynamic Fault Recovery:** Through RIP, enabling dynamic updates in case of route failure, enhancing network resilience.
+Modern enterprise networks require **high reliability, scalability, and efficient resource utilization**.  
 
-## Future Enhancements
-- Implementing **VLAN segmentation** for better network security and broadcast control.
-- Introducing **Load Balancers** to optimize traffic management across servers.
-- Adding **Wireless Access Points** for BYOD (Bring Your Own Device) environments.
-- Upgrading to **RIP v2** for classless routing and more efficient network convergence.
+This project focuses on designing a **multi-floor office network** for SSL Securities that supports:
 
-## Contributors
-- **Ayushman Behera** – Network Architecture, Design & Implementation
+- Seamless inter-floor communication  
+- Efficient IP address allocation  
+- Reliable routing between departments  
+- Expandability for future networking technologies
 
-For any issues, suggestions, or contributions, feel free to open a pull request or raise an issue.
+The implementation integrates **dynamic routing using RIP** and **Variable Length Subnet Masking (VLSM)** to optimize both performance and network management.
+
+---
+
+# 🏢 Network Architecture
+
+The office building consists of **five floors**, each representing different organizational departments connected through switches and routers.
+
+The architecture includes:
+
+- End-user workstations
+- Network switches
+- Inter-floor routers
+- Centralized servers
+- Structured subnet allocation
+
+Each floor operates as an individual **LAN segment**, while routers provide communication between these LANs.
+
+---
+
+# 🔗 Network Topology
+
+A **hybrid topology** is implemented to balance **simplicity, reliability, and scalability**.
+
+### Floors 1–4: Bus Topology
+- Provides simple network structure
+- Efficient for departmental communication
+- Reduced infrastructure complexity
+
+### Floor 5: Mesh Topology
+- Direct connections between devices
+- Provides **maximum fault tolerance**
+- Ensures alternative data paths in case of link failure
+
+### Router Interconnection
+Routers are strategically interconnected to allow **efficient routing across floors** while maintaining redundancy and flexibility.
+
+---
+
+# 🌍 IP Addressing Scheme
+
+The network uses a **VLSM-based IPv4 addressing strategy** to maximize address utilization and support varying device requirements across floors.
+
+### Floors 1–2
+- Assigned **Class A Public IPv4 addresses**
+- Supports connectivity with external networks
+
+### Floors 3–5
+- Assigned **Class A Private IPv4 addresses**
+- Optimized for secure internal communication
+
+### VLSM Implementation
+- Subnets allocated according to floor requirements
+- Efficient IP address utilization
+- Defined **subnetwork address, host range, and broadcast address** for each floor
+
+---
+
+# 🖥 Server Placement
+
+To support enterprise services, servers are strategically distributed across different floors:
+
+| Server | Location | Purpose |
+|------|------|------|
+| DNS Server | Floor 1 | Domain name resolution for the entire network |
+| DHCP Server | Floor 2 | Automatic IP assignment to network devices |
+| FTP Server | Floor 3 | File transfer services |
+| Email Server | Floor 5 | Corporate email communication |
+| HTTP Server | Floor 5 | Internal web services |
+
+This distribution improves **network efficiency and service accessibility**.
+
+---
+
+# 🔀 Routing Strategy
+
+The network uses **Dynamic Routing** through the **Routing Information Protocol (RIP)**.
+
+### Key Characteristics
+
+- Automatic route discovery
+- Adaptive route updates
+- Reduced manual configuration
+- Improved scalability
+
+### Network Routing Setup
+
+- **4 routers** deployed to connect different floors
+- Each floor has a **default gateway**
+- Gateways correspond to the **first usable IP address of each subnet**
+
+Dynamic routing ensures that **route updates occur automatically when network conditions change**.
+
+---
+
+# 📡 Connectivity Testing
+
+Connectivity was validated through **extensive ping tests** across devices located on different floors.
+
+Testing confirmed:
+
+- Successful **inter-floor communication**
+- Proper **routing table updates**
+- No packet loss during transmission
+- Stable network performance
+
+These results confirm the **correctness and reliability of the network design**.
+
+---
+
+# 🖧 Network Devices
+
+The following network devices are used in the architecture:
+
+### Switches
+- Installed on each floor
+- Connect end-user devices within the LAN
+
+### Routers
+- Interconnect different floors
+- Manage routing between subnetworks
+
+### Access Points
+- Reserved for future **wireless network expansion**
+
+---
+
+# 📂 Project Components
+
+The project repository includes:
+
+- **Network Topology Diagram**  
+  Detailed visual representation of the entire office network.
+
+- **Router Configuration Files**  
+  Configuration scripts implementing RIP dynamic routing.
+
+- **Network Design Documentation**  
+  Explanation of topology, addressing scheme, and routing logic.
+
+---
+
+# 💡 Innovations Implemented
+
+### VLSM Optimization
+Efficient IP address allocation based on the number of hosts required per floor.
+
+### Future-Proof Design
+Network structure prepared for **VLAN integration and wireless networking expansion**.
+
+### Dynamic Fault Recovery
+RIP enables automatic route recalculation in case of link or router failure.
+
+---
+
+# 🚀 Future Enhancements
+
+Potential improvements for the network include:
+
+- Implementing **VLAN segmentation** for improved network security
+- Adding **Load Balancers** to distribute traffic across servers
+- Deploying **Wireless Access Points** for BYOD environments
+- Upgrading to **RIP v2** for classless routing and improved convergence
+- Implementing **network monitoring systems**
+
+---
+
+# 👤 Author
+
+**Ayushman Behera**
+
+🎓 B.Tech – Computer Science & Engineering (Data Science)  
+🏫 Lovely Professional University  
+
+🔗 GitHub: https://github.com/ayubeh1513  
+📧 Email: ayushmanbehera689@gmail.com
+
+---
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
